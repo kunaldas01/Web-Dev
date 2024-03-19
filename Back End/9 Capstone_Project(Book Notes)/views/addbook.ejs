@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Gentium Book Plus', serif;
+            ;
+        }
+
+        body {
+            background-color: #252525;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #57aefb;
+            font-size: 50px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        #newBookForm {
+            background-color: rgb(87, 87, 87);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        #newBookForm label {
+            font-size: 19px;
+            font-weight: 500;
+            color: whitesmoke;
+        }
+
+        #newBookForm>input {
+            height: 40px;
+            width: 100%;
+            font-size: 17px;
+            font-weight: 500;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            padding: 5px;
+        }
+
+        #newBookForm textarea {
+            font-size: 17px;
+            font-weight: 500;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            padding: 5px;
+        }
+
+        #newBookForm div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .add-btn {
+            height: 40px;
+            width: 50%;
+            margin-bottom: none;
+            background-color: #339DFF;
+            color: white;
+            font-size: 17px;
+            font-weight: 600;
+            border: 0;
+            transition: all 0.3s;
+            border-radius: 5px;
+        }
+
+        .add-btn:hover {
+            color: #339DFF;
+            background: #fff;
+            box-shadow: 0 4px 4px rgba(83, 100, 255, 0.549);
+        }
+
+        .cancel-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            height: 40px;
+            width: 50%;
+            color: #339DFF;
+            background: #fff;
+            font-size: 17px;
+            font-weight: 600;
+            border-radius: 5px;
+        }
+
+        .cancel-btn:hover {
+            background: #fff;
+            color: #339DFF;
+            box-shadow: 0 4px 4px rgba(83, 100, 255, 0.549);
+        }
+    </style>
+</head>
+
+<body>
+    <% if(locals.bookData){ %>
+        <form action="/addbook/<%= bookData.id %>" method="post" id="newBookForm">
+            <h1>Edit Book</h1>
+            <label for="book-name">Enter Book Name</label>
+            <input type="text" id="book-name" name="book-name" placeholder="Enter book name"
+                value="<%= bookData.book_name %>">
+            <label for="author">Enter Author Name</label>
+            <input type="text" id="author" name="author" placeholder="Enter Author name" value="<%= bookData.author %>">
+            <label for="isbn">Enter ISBN</label>
+            <input type="number" id="isbn" name="isbn" placeholder="Enter ISBN" value="<%= bookData.isbn %>">
+            <label for="rating">Enter Rating</label>
+            <input type="number" id="rating" name="rating" placeholder="Enter rating" value="<%= bookData.rating %>">
+            <label for="description">Enter Description</label>
+            <textarea name="description" id="description" cols="80" rows="10"
+                placeholder="Decription"><%= bookData.description %></textarea>
+            <% }else{ %>
+                <form action="/addbook/0" method="post" id="newBookForm">
+                    <h1>Add New Book</h1>
+                    <label for="book-name">Enter Book Name</label>
+                    <input type="text" id="book-name" name="book-name" placeholder="Enter book name">
+                    <label for="author">Enter Author Name</label>
+                    <input type="text" id="author" name="author" placeholder="Enter Author name">
+                    <label for="isbn">Enter ISBN</label>
+                    <input type="number" id="isbn" name="isbn" placeholder="Enter ISBN">
+                    <label for="rating">Enter Rating</label>
+                    <input type="text" id="rating" name="rating" placeholder="Enter rating">
+                    <label for="description">Enter Description</label>
+                    <textarea name="description" id="description" cols="80" rows="10"
+                        placeholder="Decription"></textarea>
+                    <% } %>
+                        <div>
+                            <a href="/" class="cancel-btn">Cancel</a>
+                            <input type="submit" value="Save" class="add-btn">
+                        </div>
+                        <input type="hidden" name="date" id="date">
+                </form>
+
+                <script>
+                    var todayDate = new Date().toISOString().slice(0, 10);
+                    console.log(todayDate);
+                    document.querySelector("#date").value = todayDate;
+                </script>
+</body>
+
+</html>

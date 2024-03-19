@@ -1,0 +1,17 @@
+{
+  "name": "3.4-middleware",
+  "version": "1.0.0",
+  "description": "",
+  "main": "01_bodyParser.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "morgan": "^1.10.0"
+  }
+}

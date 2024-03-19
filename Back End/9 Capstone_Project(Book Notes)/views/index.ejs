@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gentium+Book+Plus&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="main">
+        <h1>Book Notes</h1>
+        <p>Tiny summary but detailed notes of books.</p>
+        <a class="add-btn" style="--content: 'Add a Book';" href="/new/0">
+            <div class="left"></div>
+            Add a Book
+            <div class="right"></div>
+        </a>
+
+        <hr />
+
+        <% bookData.forEach(book=> {%>
+            <div class="book-data" id="book-<%= book.id %>">
+                <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" alt="book-cover">
+                <h2>
+                    <%= book.book_name %>, <%= book.author %>
+                </h2>
+                <p>Date read: <%= book.time_read %> Rating: <%= book.rating %>/10</p>
+                <p>ISBN: <%= book.isbn %>
+                </p>
+                <p>
+                    <%= book.description %>
+                </p>
+                <div class="alter-btn">
+                    <a href="/delete/<%= book.id %>" id="del-btn">Delete</a>
+                    <a href="/new/<%= book.id %>" id="edit-btn">Edit</a>
+                </div>
+            </div>
+            <% }); %>
+    </div>
+</body>
+
+</html>

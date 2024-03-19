@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Keeper App</title>
+  <link href="https://fonts.googleapis.com/css?family=McLaren|Montserrat&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div id="root"></div>
+  <script>
+    var docWidth = document.documentElement.offsetWidth;
+    [].forEach.call(
+      document.querySelectorAll('*'),
+      function (el) {
+        if (el.offsetWidth > docWidth) {
+          console.log(el);
+        }
+      }
+    );
+  </script>
+  <script src="../src/index.js" type="text/jsx"></script>
+</body>
+
+</html>
